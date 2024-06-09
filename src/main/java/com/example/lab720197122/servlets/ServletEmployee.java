@@ -106,7 +106,7 @@ public class ServletEmployee extends HttpServlet {
                     Employee employee = daoEmployee.buscarPorId(employeeId);
 
                     if(employee == null){
-                        daoEmployee.crearEmployee(Integer.parseInt(employeeId), full_name, email, password, phone_number, hire_date, job_id, Double.parseDouble(salary), Double.parseDouble(commission_pct), Integer.parseInt(manager_id), Integer.parseInt(department_id),0);
+                        daoEmployee.crearEmployee(Integer.parseInt(employeeId), full_name, email, password, phone_number, hire_date, job_id, Double.parseDouble(salary), Double.parseDouble(commission_pct), Integer.parseInt(manager_id), Integer.parseInt(department_id));
                         response.sendRedirect(request.getContextPath() + "/ServletEmployee");
                     }else{
                         request.getRequestDispatcher("Employee/crear_empleado.jsp").forward(request,response);

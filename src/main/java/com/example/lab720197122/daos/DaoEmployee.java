@@ -100,7 +100,7 @@ public class DaoEmployee {
         return employee;
     }
 
-    public void crearEmployee(int employee_id, String full_name, String email, String password, String phone_number, String hire_date, String job_id, double salary, double commission_pct, int manager_id, int department_id, int enabled){
+    public void crearEmployee(int employee_id, String full_name, String email, String password, String phone_number, String hire_date, String job_id, double salary, double commission_pct, int manager_id, int department_id){
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -112,7 +112,7 @@ public class DaoEmployee {
         String username = "root";
         String password_db = "root";
 
-        String sql = "insert into jobs (employee_id, first_name, last_name, email, password, phone_number, hire_date, job_id, salary, commission_pct, manager_id, department_id, enabled) values (?,?,?,?,?,?,?,?,?,?,?,?);";
+        String sql = "insert into jobs (employee_id, first_name, last_name, email, password, phone_number, hire_date, job_id, salary, commission_pct, manager_id, department_id, enabled) values (?,?,?,?,?,?,?,?,?,?,?,1);";
 
         try(Connection connection = DriverManager.getConnection(url,username,password_db);
             PreparedStatement pstmt = connection.prepareStatement(sql)){
@@ -134,7 +134,6 @@ public class DaoEmployee {
             pstmt.setDouble(10, commission_pct);
             pstmt.setInt(11, manager_id);
             pstmt.setInt(12, department_id);
-            pstmt.setInt(13, enabled);
 
             pstmt.executeUpdate();
 
