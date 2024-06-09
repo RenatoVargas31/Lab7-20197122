@@ -117,13 +117,9 @@ public class ServletEmployee extends HttpServlet {
                 String full_name2 = request.getParameter("full_name");
                 String email2 = request.getParameter("email");
                 String password2 = request.getParameter("password");
-                String phone_number2 = request.getParameter("phone_number");
                 String hire_date2 = request.getParameter("hire_date");
                 String job_id2 = request.getParameter("job_id");
                 String salary2 = request.getParameter("salary");
-                String commission_pct2 = request.getParameter("commission_pct");
-                String manager_id2 = request.getParameter("manager_id");
-                String department_id2 = request.getParameter("department_id");
 
                 boolean todoValido2 = true;
 
@@ -152,13 +148,9 @@ public class ServletEmployee extends HttpServlet {
                     employee.setFullName(full_name2);
                     employee.setEmail(email2);
                     employee.setPassword(password2);
-                    employee.setPhoneNumber(phone_number2);
                     employee.setHireDate(hire_date2);
                     employee.setJobId(job_id2);
                     employee.setSalary(Double.parseDouble(salary2));
-                    employee.setCommissionPct(Double.parseDouble(commission_pct2));
-                    employee.setManagerId(Integer.parseInt(manager_id2));
-                    employee.setDepartmentId(Integer.parseInt(department_id2));
 
                     daoEmployee.editarEmployee(employee);
                     response.sendRedirect(request.getContextPath() + "/ServletEmployee");

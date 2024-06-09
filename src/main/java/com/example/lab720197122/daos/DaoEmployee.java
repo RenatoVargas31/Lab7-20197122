@@ -150,7 +150,7 @@ public class DaoEmployee {
         String username = "root";
         String password = "root";
 
-        String sql = "update employees set first_name = ?, last_name = ?, email = ?, password = ?, phone_number=?, hire_date = ?, job_id = ?, salary = ?, commission_pct = ?, manager_id = ?, department_id = ?, enabled = ? where job_id = ?";
+        String sql = "update employees set first_name = ?, last_name = ?, email = ?, password = ?, hire_date = ?, job_id = ?, salary = ? where job_id = ?";
 
         try(Connection connection = DriverManager.getConnection(url,username,password);
             PreparedStatement pstmt = connection.prepareStatement(sql)){
@@ -163,14 +163,9 @@ public class DaoEmployee {
             pstmt.setString(2, last_name);
             pstmt.setString(3, employee.getEmail());
             pstmt.setString(4, employee.getPassword());
-            pstmt.setString(5, employee.getPhoneNumber());
             pstmt.setString(6, employee.getHireDate());
             pstmt.setString(7, employee.getJobId());
             pstmt.setDouble(8, employee.getSalary());
-            pstmt.setDouble(9, employee.getCommissionPct());
-            pstmt.setInt(10, employee.getManagerId());
-            pstmt.setInt(11, employee.getDepartmentId());
-            pstmt.setInt(12, employee.getEnabled());
 
             pstmt.executeUpdate();
 
