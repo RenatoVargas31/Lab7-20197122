@@ -47,6 +47,14 @@ public class ServletEmployee extends HttpServlet {
 
                 if(employeed != null){
                     try {
+                        daoEmployee.nullearManagerId(Integer.toString(employeed.getManagerId()));
+                    } catch (SQLException e) {
+                        System.out.println("Log: excepcion: " + e.getMessage());
+                    }
+                }
+
+                if(employeed != null){
+                    try {
                         daoEmployee.borrarEmployee(idd);
                     } catch (SQLException e) {
                         System.out.println("Log: excepcion: " + e.getMessage());

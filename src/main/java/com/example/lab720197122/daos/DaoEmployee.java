@@ -66,7 +66,7 @@ public class DaoEmployee {
         String username = "root";
         String password = "root";
 
-        String sql = "select e.employee_id, CONCAT(e.first_name,' ',e.last_name) AS full_name, e.email, e.password, e.phone_number, e.hire_date, e.job_id, e.salary, e.commission_pct, e.manager_id, e.department_id, e.enabled from employees e where employee_id = ?";
+        String sql = "select * from employees where employee_id = ?";
 
 
         try (Connection conn = DriverManager.getConnection(url, username, password);
@@ -77,18 +77,20 @@ public class DaoEmployee {
             try(ResultSet rs = pstmt.executeQuery()){
                 while (rs.next()) {
                     employee = new Employee();
-                    employee.setEmployeeId(rs.getInt("employee_id"));
-                    employee.setFullName(rs.getString("full_name"));
-                    employee.setEmail(rs.getString("email"));
-                    employee.setPassword(rs.getString("password"));
-                    employee.setPhoneNumber(rs.getString("phone_number"));
-                    employee.setHireDate(rs.getString("hire_date"));
-                    employee.setJobId(rs.getString("job_id"));
-                    employee.setSalary(rs.getDouble("salary"));
-                    employee.setCommissionPct(rs.getDouble("commission_pct"));
-                    employee.setManagerId(rs.getInt("manager_id"));
-                    employee.setDepartmentId(rs.getInt("department_id"));
-                    employee.setEnabled(rs.getInt("enabled"));
+
+                    employee.setEmployeeId(rs.getInt(1));
+                    String fullname = rs.getString(2) + " " + rs.getString(3);
+                    employee.setFullName(fullname);
+                    employee.setEmail(rs.getString(4));
+                    employee.setPassword(rs.getString(5));
+                    employee.setPhoneNumber(rs.getString(6));
+                    employee.setHireDate(rs.getString(7));
+                    employee.setJobId(rs.getString(8));
+                    employee.setSalary(rs.getDouble(9));
+                    employee.setCommissionPct(rs.getDouble(10));
+                    employee.setManagerId(rs.getInt(11));
+                    employee.setDepartmentId(rs.getInt(12));
+                    employee.setEnabled(rs.getInt(13));
                 }
             }
         } catch (SQLException e) {
@@ -194,7 +196,7 @@ public class DaoEmployee {
         String username = "root";
         String password = "root";
 
-        String sql = "delete from employees where employee_id = ?;";
+        String sql = "UPDATE employees SET enabled = 0 WHERE employee_id = ?";
 
         try(Connection connection = DriverManager.getConnection(url,username,password);
             PreparedStatement pstmt = connection.prepareStatement(sql)){
@@ -203,4 +205,5 @@ public class DaoEmployee {
             pstmt.executeUpdate();
         }
     }
+
 }

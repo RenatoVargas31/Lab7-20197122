@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%
     ArrayList<Employee> listaEmployees = (ArrayList<Employee>) request.getAttribute("listaEmployees");
 %>
@@ -39,6 +40,7 @@
         </tr>
         <% for (Employee employee : listaEmployees) { %>
         <tr>
+            <% if (employee.getEnabled() == 1) {%>
             <td><%=employee.getEmployeeId()  %>
             </td>
             <td><%=employee.getFullName()%>
@@ -50,7 +52,8 @@
             <td>$ <%=employee.getSalary()%>
             </td>
             <td><a class="btn btn-success" href="<%=request.getContextPath()%>/ServletEmployee?action=editEmployee&id=<%= employee.getEmployeeId() %>">Editar</a></td>
-            <td><a onclick="return confirm('¿Esta seguro de borrar?')" class="btn btn-danger" href="<%=request.getContextPath()%>/ServletEmployee?action=delEmployee&id=<%= employee.getEmployeeId() %>">Borrar</a></td>
+            <td><a onclick="return confirm('¿Esta seguro de borrar?')" class="btn btn-danger" href="<%=request.getContextPath()%>/ServletEmployee?action=delEmployee&id=<%=employee.getEmployeeId()%>">Borrar</a></td>
+            <% } %>
         </tr>
         <% } %>
     </table>
