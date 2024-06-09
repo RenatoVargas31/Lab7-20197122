@@ -71,13 +71,10 @@ public class ServletEmployee extends HttpServlet {
                 String full_name = request.getParameter("full_name");
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
-                String phone_number = request.getParameter("phone_number");
                 String hire_date = request.getParameter("hire_date");
                 String job_id = request.getParameter("job_id");
                 String salary = request.getParameter("salary");
-                String commission_pct = request.getParameter("commission_pct");
-                String manager_id = request.getParameter("manager_id");
-                String department_id = request.getParameter("department_id");
+
 
                 boolean todoValido = true;
 
@@ -106,7 +103,7 @@ public class ServletEmployee extends HttpServlet {
                     Employee employee = daoEmployee.buscarPorId(employeeId);
 
                     if(employee == null){
-                        daoEmployee.crearEmployee(Integer.parseInt(employeeId), full_name, email, password, phone_number, hire_date, job_id, Double.parseDouble(salary), Double.parseDouble(commission_pct), Integer.parseInt(manager_id), Integer.parseInt(department_id));
+                        daoEmployee.crearEmployee(Integer.parseInt(employeeId), full_name, email, password, hire_date, job_id, Double.parseDouble(salary));
                         response.sendRedirect(request.getContextPath() + "/ServletEmployee");
                     }else{
                         request.getRequestDispatcher("Employee/crear_empleado.jsp").forward(request,response);

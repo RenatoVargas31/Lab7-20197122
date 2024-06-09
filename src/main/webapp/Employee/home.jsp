@@ -13,7 +13,7 @@
 %>
 <html>
 <head>
-    <title>Trabajos</title>
+    <title>Empleados</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
@@ -23,7 +23,7 @@
 <div class="container">
     <div class="clearfix mt-3 mt-2">
         <a href="<%=request.getContextPath()%>/ServletEmployee">
-            <h1 class="float-start link-dark">Lista de Trabajos</h1>
+            <h1 class="float-start link-dark">Lista de Empleados</h1>
         </a>
         <a class="btn btn-primary float-end mt-1" href="<%=request.getContextPath() %>/ServletEmployee?action=newEmployee">Crear trabajo</a>
     </div>
@@ -33,7 +33,7 @@
             <th>ID Usuario</th>
             <th>Nombre</th>
             <th>Correo eléctronico</th>
-            <th>ID Trabajo/th>
+            <th>ID Trabajo</th>
             <th>Salary</th>
             <th></th>
             <th></th>
